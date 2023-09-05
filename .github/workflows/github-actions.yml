@@ -24,4 +24,11 @@ jobs:
           - name: Cleanup
             if: always()
             run: |
-              ssh-add -D
+              ssh-add -D 
+
+          - name: Import GPG Key
+            uses: crazy-max/ghaction-import-gpg@v1
+            env:
+                 GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+                 PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+
